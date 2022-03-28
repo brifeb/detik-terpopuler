@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Detik Populer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <!--    <link href="{{ url_for('static', filename='css/paper-dashboard.min.css') }}" rel="stylesheet">-->
+    <script src="https://kit.fontawesome.com/a9acfd9dac.js" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <style>
+    .card-horizontal {
+        display: flex;
+        flex: 1 1 auto;
+    }
+<!--    .w-75px {-->
+<!--    width: 500px!important;-->
+<!--    }-->
+    .post-content img {
+    width: 100%
+    }
+    a {
+    color: #157375
+    }
+    body {
+    font-size: 1rem;
+    }
+
+
+
+
+    </style>
+    <script>
+        /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (currentScrollPos < 10) {
+    //document.getElementById("navbar").style.top = "0";
+    $("#navbar").slideDown();
+  } else if (prevScrollpos > currentScrollPos) {
+    $("#navbar").slideDown();
+  } else {
+    //document.getElementById("navbar").style.top = "-60px";
+    $("#navbar").slideUp();
+  }
+  prevScrollpos = currentScrollPos;
+}
+
+
+
+    </script>
+</head>
+<body>
+<a href="#top">
+    <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+        <span style="margin:0 auto; color:#ccc">↑</span>
+    </nav>
+</a>
+
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+        <span class="icon">
+            <i class="fas fa-home"></i>
+        </span>
+    </a>
+    <a class="navbar-brand" href="#top">{{now}}</a>
+    <a href="/?update=True&cat={{now}}">
+        <small>{{ up_time }}</small>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+        {% for cat in kategori %}
+        <a href="/?cat={{cat}}">
+            {% if now == cat %}
+            <button type="button" class="btn btn-sm btn-primary my-1 mx-1">{{cat}}</button>
+            {% else %}
+            <button type="button" class="btn btn-sm btn-secondary my-1 mx-1">{{cat}}</button>
+            {% endif %}
+        </a>
+        {% endfor %}
+        <a href="/?update=True&cat=all">
+            <button type="button" class="btn btn-sm btn-danger my-1 mx-5">⟳</button>
+        </a>
+    </div>
+</nav>
+
+<div class="container-fluid my-1 mt-5 pt-2" id="top">
+
+    <div class="row">
+        {% for populer in populers %}
+
+        <div class="col-4 col-sm-4 col-lg-2 my-0 py-0">
+            <div class="card my-0 py-0">
+                <a href="#post{{populer['id']|safe}}p">
+                    <img class="w-100" src="{{ populer['img']|safe }}" alt="">
+                </a>
+                <p class="my-0 mx-1" style="font-size:8px">{{ populer['title'][:28]|safe }}..
+                </p>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container px-2" style="max-width:680px; margin:0 auto;">
+    <p class="text-center mt-3">Populer</p>
+
+    <div class="row">
+        {% for populer in populers %}
+
+        <div class="col-lg-12 col-md-3 mb-2" id="post{{populer['id']|safe}}p">
+            <div class="card px-2 pt-2 mb-0">
+                <div class="card-horizontal">
+                    <a data-toggle="collapse" href="#post{{populer['id']|safe}}" role="button"
+                       aria-expanded="false">
+                        <img class="w-75px" src="{{ populer['img']|safe }}" alt="">
+                    </a>
+                    <div class="card-body pb-2 pt-0 px-2">
+                        <h6 class="card-title mb-0">
+                            <a data-toggle="collapse" href="#post{{populer['id']|safe}}" role="button"
+                               aria-expanded="false">
+                                {{ populer['title']|safe }}
+                            </a>
+                        </h6>
+                    </div>
+                </div>
+
+                <div class="card-body py-2 px-2">
+                    <div class="collapse mt-2" id="post{{populer['id']|safe}}">
+                        <div class="post-content">{{populer['content'][1:-1]|safe}}</div>
+                        <a href="{{populer['url_post']|safe}}" target="blank">link</a>
+                        <a data-toggle="collapse" href="#post{{populer['id']|safe}}" role="button"
+                           aria-expanded="false">
+                            <img class="card-img-center w-100" src="{{ populer['img']|safe }}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
