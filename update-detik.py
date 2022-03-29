@@ -1,5 +1,5 @@
 import os
-import run
+import app
 import pathlib
 import datetime
 
@@ -12,7 +12,7 @@ kategori = ['detikcom', 'news', 'finance', 'hot', 'inet', 'sport', 'oto', 'trave
             'wolipop']
 
 for kat in kategori:
-    run.get_populer(kat)
+    app.get_populer(kat)
 print('update done!')
 
 #cek
