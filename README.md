@@ -6,9 +6,13 @@ show in tables grid
 - auto load next page
 - no ads
 
+# Tech
+- Python; Flask
+- Bootstrap
+
 ## how to:
 1. clone
-2. create cron job to run update
+2. create cron job to run update_detik.py
 
 ### todo:
 - fix gallery scrap
