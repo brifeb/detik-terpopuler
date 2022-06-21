@@ -143,7 +143,10 @@
 
                     <article class="card-body py-0 px-2">
                         <div class="collapse mt-2" id="post{{populer['id']|safe}}">
-                            <div class="post-content" data-toggle="collapse" >{{populer['content'][1:-1]|safe}}</div>
+                            <a data-toggle="collapse" href="#post{{populer['id']|safe}}" role="button"
+                                aria-expanded="false">
+                                <div class="post-content">{{populer['content'][1:-1]|safe}}</div>
+                            </a>
                             <a href="{{populer['url_post']|safe}}" target="blank">link</a>
                             <a data-toggle="collapse" href="#post{{populer['id']|safe}}" role="button"
                                 aria-expanded="false">
