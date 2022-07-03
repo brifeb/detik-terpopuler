@@ -88,11 +88,32 @@
             <a href="/?cat={{cat}}">
                 {% if now == cat %}
                 <button type="button" class="btn btn-lg btn-primary m-3 p-3">
-                    {{cat}}
-                </button>
-                {% else %}
-                <button type="button" class="btn btn-lg btn-secondary m-3 p-3">{{cat}}</button>
-                {% endif %}
+                    {% else %}
+                    <button type="button" class="btn btn-lg btn-secondary m-3 p-3">
+                        {% endif %}
+
+                        {% if cat == 'sepakbola' %}
+                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                        {% elif cat == 'oto' %}
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                        {% elif cat == 'inet' %}
+                        <i class="fa fa-laptop" aria-hidden="true"></i>
+                        {% elif cat == 'hot' %}
+                        <i class="fa fa-fire" aria-hidden="true"></i>
+                        {% elif cat == 'news' %}
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                        {% elif cat == 'finance' %}
+                        <i class="fa fa-usd" aria-hidden="true"></i>
+                        {% elif cat == 'travel' %}
+                        <i class="fa fa-plane" aria-hidden="true"></i>
+                        {% elif cat == 'food' %}
+                        <i class="fa fa-cutlery" aria-hidden="true"></i>
+                        {% elif cat == 'health' %}
+                        <i class="fa fa-medkit" aria-hidden="true"></i>
+                        {% endif %}
+                        {{cat}}
+                    </button>
+
             </a>
             {% endfor %}
             <a href="/?update=True&cat=all">
