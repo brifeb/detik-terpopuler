@@ -13,6 +13,43 @@ DATA_DIR = os.path.join(PROJECT_ROOT, "data/")
 app = Flask(__name__)
 
 
+@app.route('/api')
+def api():
+    kategori = ['detikcom', 'news', 'finance', 'hot', 'inet', 'sport', 'oto', 'travel', 'sepakbola', 'food', 'health',
+                'wolipop']
+
+    cat = request.args.get('cat') or 'detikcom'
+    update = request.args.get('update') or False
+
+    if update:
+        if cat == 'all':
+            print('updating all..')
+            for kat in kategori:
+                get_populer(kat)
+            print('update all done!')
+        else:
+            get_populer(cat)
+            print('update {} done!'.format(cat))
+
+    if cat == 'all':
+        cat = "detikcom"
+    populer_posts = load_populer(cat)
+
+    fname = pathlib.Path('{}detik-{}.json'.format(DATA_DIR, cat))
+    mtime = datetime.datetime.fromtimestamp(fname.stat().st_mtime)
+    up_time = mtime.strftime("%d %b %H:%M")
+
+    data = {
+        'length': len(populer_posts),
+        'posts' : populer_posts,
+        'update_time': up_time,
+        'cat': cat,
+        'categories': kategori
+    }
+
+    return data
+
+    
 @app.route('/')
 def home():
     kategori = ['detikcom', 'news', 'finance', 'hot', 'inet', 'sport', 'oto', 'travel', 'sepakbola', 'food', 'health',
