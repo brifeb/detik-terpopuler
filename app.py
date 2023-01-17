@@ -129,29 +129,34 @@ def get_populer(cat):
 def get_scrap(url):
     print('get news from url: {}'.format(url))
 
-    url_post = url
-    post_soup = BeautifulSoup(requests.get(str(url_post) + '?single=1').text, features='html.parser')
     try:
-        post_title = post_soup.find(attrs={'class': 'detail__title'}).text.strip()
-        post_img = post_soup.find(attrs={'class': 'detail__media'}).find('figure').find('img')['src']
-        post_content = post_soup.find(attrs={'class': 'itp_bodycontent'})
-    except:
-        print("gagal")
-        # pass
-    # populer_posts.append([judul, post_content, id_post])
 
-    data_post = {
-        'title': post_title,
-        'img' : post_img,
-        'content': '"{}"'.format(post_content),
-        'id': 1,
-        'url_post':url_post
-    }
+        url_post = url
+        post_soup = BeautifulSoup(requests.get(str(url_post) + '?single=1').text, features='html.parser')
+        try:
+            post_title = post_soup.find(attrs={'class': 'detail__title'}).text.strip()
+            post_img = post_soup.find(attrs={'class': 'detail__media'}).find('figure').find('img')['src']
+            post_content = post_soup.find(attrs={'class': 'itp_bodycontent'})
+        except:
+            print("gagal")
+            # pass
+        # populer_posts.append([judul, post_content, id_post])
+
+        data_post = {
+            'title': post_title,
+            'img' : post_img,
+            'content': '"{}"'.format(post_content),
+            'id': 1,
+            'url_post':url_post
+        }
+        
+        print("data_post")
+        print(post_title)
+        print(post_img)
+        return [data_post]
     
-    print("data_post")
-    print(post_title)
-    print(post_img)
-    return [data_post]
+    except:
+        return []
 
 
     # print('download {} done!'.format(cat))
