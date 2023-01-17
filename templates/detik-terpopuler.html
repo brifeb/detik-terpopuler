@@ -11,7 +11,7 @@
 
         gtag('config', 'G-Y3C8Q2J3RE');
     </script>
-    
+
     <title>Detik Populer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +28,8 @@
     <script src="https://kit.fontawesome.com/a9acfd9dac.js" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 
 
     <style>
@@ -134,9 +136,27 @@
         </div>
     </nav>
 
+
     <!-- list articles -->
     <div class="container px-2 mb-5 pb-5 mt-5" style="max-width:680px; margin:0 auto;" id="top">
         <p class="text-center mt-5">Populer</p>
+        <p class="text-center mt-5" id="clipbo"></p>
+        <script>
+            console.log("Clipboard:")
+            // const text = await navigator.clipboard.readText();
+            // console.log("Clipboard:" + text)
+            navigator.clipboard.readText()
+                .then(text => {
+                    console.log('Pasted content: ', text);
+                    document.getElementById('clipbo').innerHTML += text;
+                })
+                .catch(err => {
+                    console.error('Failed to read clipboard contents: ', err);
+                });
+            
+
+
+        </script>
 
         <div class="row mt-5">
             {% for populer in populers %}
