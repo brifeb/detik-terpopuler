@@ -132,14 +132,49 @@ def get_scrap(url):
     try:
 
         url_post = url
-        post_soup = BeautifulSoup(requests.get(str(url_post) + '?single=1').text, features='html.parser')
-        try:
-            post_title = post_soup.find(attrs={'class': 'detail__title'}).text.strip()
-            post_img = post_soup.find(attrs={'class': 'detail__media'}).find('figure').find('img')['src']
-            post_content = post_soup.find(attrs={'class': 'itp_bodycontent'})
-        except:
-            print("gagal")
-            # pass
+
+        if "detik.com" in url_post:        
+            post_soup = BeautifulSoup(requests.get(str(url_post) + '?single=1').text, features='html.parser')
+            try:
+                post_title = post_soup.find(attrs={'class': 'detail__title'}).text.strip()
+                post_img = post_soup.find(attrs={'class': 'detail__media'}).find('figure').find('img')['src']
+                post_content = post_soup.find(attrs={'class': 'itp_bodycontent'})
+            except:
+                raise Exception("detik gagal parse")
+                print("gagal parse detik")
+                # pass
+        # populer_posts.append([judul, post_content, id_post])
+
+        if "tribunnews.com" in url_post:        
+            post_soup = BeautifulSoup(requests.get(str(url_post)).text, features='html.parser')
+            try:
+                print(post_soup)
+                post_title = post_soup.find(attrs={'id': 'article'}).find('h1').text.strip()
+                print(post_title, post_title)
+                post_img = post_soup.find(attrs={'class': 'detail__media'}).find('figure').find('img')['src']
+                post_content = post_soup.find(attrs={'class': 'itp_bodycontent'})
+            except:
+                raise Exception("tribunnews gagal parse")
+                print("gagal parse detik")
+                # pass
+        # populer_posts.append([judul, post_content, id_post])
+
+        #https://herstory.co.id/read111635/cek-fakta-sudah-tak-kuat-menahan-nikita-mirzani-syok-tiba-tiba-sule-lumat-organ-intimnyaastaga?page=all
+        if "herstory.co.id" in url_post:        
+            post_soup = BeautifulSoup(requests.get(str(url_post) + '?page=all').text, features='html.parser')
+            try:
+                # print(post_soup)
+                post_title = post_soup.find('h2', attrs={'class': 'fw-bolder'}).text.strip()
+                print(post_title, post_title)
+                post_img = post_soup.find('picture').find('source')['srcset']
+                print(post_title, post_title)
+
+                post_content = post_soup.find(attrs={'class': 'article-post'})
+                # print(post_content, post_content)
+            except:
+                raise Exception("herstory gagal parse")
+                print("gagal parse detik")
+                # pass
         # populer_posts.append([judul, post_content, id_post])
 
         data_post = {
@@ -155,8 +190,15 @@ def get_scrap(url):
         print(post_img)
         return [data_post]
     
-    except:
-        return []
+    except Exception as e:
+        print("except", e)
+        return [{
+            'title': '[error] ' + str(e),
+            'img' : '',
+            'content': '',
+            'id': 1,
+            'url_post':url_post
+        }]
 
 
     # print('download {} done!'.format(cat))

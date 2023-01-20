@@ -153,22 +153,9 @@
                 </div>
             </div>
         </form>
-        <script>
-            console.log("Clipboard:")
-            // const text = await navigator.clipboard.readText();
-            // console.log("Clipboard:" + text)
-            navigator.clipboard.readText()
-                .then(text => {
-                    console.log('Pasted content: ', text);
-                    document.getElementById('clipbo').innerHTML += text;
-                })
-                .catch(err => {
-                    console.error('Failed to read clipboard contents: ', err);
-                });
 
-
-
-        </script>
+<!-- <script type='text/javascript' src='https://visualisasi.dpr.go.id/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1440px; height: 653px;'><object class='tableauViz' width='1440' height='653' style='display:none;'><param name='host_url' value='https%3A%2F%2Fvisualisasi.dpr.go.id%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DPRStreamrev2&#47;Dashboard2&#47;a648dd76-d0b4-4978-9cc4-20f89dff6590&#47;9e91f706-2544-4e34-b5c2-ff46daa450b5' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div> -->
+<!-- <script type='text/javascript' src='https://visualisasi.dpr.go.id/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1440px; height: 710px;'><object class='tableauViz' width='1440' height='710' style='display:none;'><param name='host_url' value='https%3A%2F%2Fvisualisasi.dpr.go.id%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DPRStreamrev2&#47;DistribusiSentimen&#47;793e23fb-8a35-4af1-b255-322da997e31a&#47;0cb91480-6a46-47a1-8667-f6a453728ab7' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div> -->
 
         <div class="row mt-5">
             {% for populer in populers %}
