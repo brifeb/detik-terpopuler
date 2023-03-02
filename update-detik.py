@@ -8,8 +8,8 @@ print('Update Detik Populer starting..')
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 
-kategori = ['detikcom', 'news', 'finance', 'hot', 'inet', 'sport', 'oto', 'travel', 'sepakbola', 'food', 'health',
-            'wolipop']
+kategori = ['detikcom', 'news', 'finance', 'hot', 'inet', 'sport', 'oto', 'travel', 'sepakbola',
+            'food', 'health', 'wolipop', 'edu', 'jateng', 'jatim', 'jabar', 'sulsel', 'sumut', 'bali', 'hikmah']
 
 for kat in kategori:
     app.get_populer(kat)

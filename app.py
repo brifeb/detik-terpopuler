@@ -10,13 +10,15 @@ from flask import Flask, render_template, request
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DATA_DIR = os.path.join(PROJECT_ROOT, "data/")
 
+kategori = ['detikcom', 'news', 'finance', 'hot', 'inet', 'sport', 'oto', 'travel', 'sepakbola',
+            'food', 'health', 'wolipop', 'edu', 'jateng', 'jatim', 'jabar', 'sulsel', 'sumut', 'bali', 'hikmah']
+
+
 app = Flask(__name__)
 
 
 @app.route('/api')
 def api():
-    kategori = ['detikcom', 'news', 'finance', 'hot', 'inet', 'sport', 'oto', 'travel', 'sepakbola', 'food', 'health',
-                'wolipop']
 
     cat = request.args.get('cat') or 'detikcom'
     update = request.args.get('update') or False
@@ -52,8 +54,6 @@ def api():
     
 @app.route('/')
 def home():
-    kategori = ['detikcom', 'news', 'finance', 'hot', 'inet', 'sport', 'oto', 'travel', 'sepakbola', 'food', 'health',
-                'wolipop']
 
     cat = request.args.get('cat') or 'detikcom'
     update = request.args.get('update') or False

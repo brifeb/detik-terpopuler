@@ -96,40 +96,47 @@
 
         <div class="collapse navbar-collapse text-center" id="navbarTogglerDemo02">
 
-            {% for cat in kategori %}
-            <a href="/?cat={{cat}}">
-                {% if now == cat %}
-                <button type="button" class="btn btn-lg btn-primary m-3 p-3">
-                    {% else %}
-                    <button type="button" class="btn btn-lg btn-secondary m-3 p-3">
-                        {% endif %}
+            <div class="container-fluid">
+                <div class="row">
 
-                        {% if cat == 'sepakbola' %}
-                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                        {% elif cat == 'oto' %}
-                        <i class="fa fa-car" aria-hidden="true"></i>
-                        {% elif cat == 'inet' %}
-                        <i class="fa fa-laptop" aria-hidden="true"></i>
-                        {% elif cat == 'hot' %}
-                        <i class="fa fa-fire" aria-hidden="true"></i>
-                        {% elif cat == 'news' %}
-                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                        {% elif cat == 'finance' %}
-                        <i class="fa fa-usd" aria-hidden="true"></i>
-                        {% elif cat == 'travel' %}
-                        <i class="fa fa-plane" aria-hidden="true"></i>
-                        {% elif cat == 'food' %}
-                        <i class="fa fa-cutlery" aria-hidden="true"></i>
-                        {% elif cat == 'health' %}
-                        <i class="fa fa-medkit" aria-hidden="true"></i>
-                        {% elif cat == 'sport' %}
-                        <i class="fa fa-bicycle" aria-hidden="true"></i>
-                        {% endif %}
-                        {{cat}}
-                    </button>
+                    {% for cat in kategori %}
+                    <div class="col-2 col-sm-2 col-lg-2 mx-0 p-1">
+                        <a href="/?cat={{cat}}">
+                            {% if now == cat %}
+                            <button type="button" class="btn btn-sm btn-primary m-1 p-1">
+                                {% else %}
+                                <button type="button" class="btn btn-sm btn-secondary m-1 p-1">
+                                    {% endif %}
 
-            </a>
-            {% endfor %}
+                                    {% if cat == 'sepakbola' %}
+                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                    {% elif cat == 'oto' %}
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                    {% elif cat == 'inet' %}
+                                    <i class="fa fa-laptop" aria-hidden="true"></i>
+                                    {% elif cat == 'hot' %}
+                                    <i class="fa fa-fire" aria-hidden="true"></i>
+                                    {% elif cat == 'news' %}
+                                    <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                    {% elif cat == 'finance' %}
+                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                    {% elif cat == 'travel' %}
+                                    <i class="fa fa-plane" aria-hidden="true"></i>
+                                    {% elif cat == 'food' %}
+                                    <i class="fa fa-cutlery" aria-hidden="true"></i>
+                                    {% elif cat == 'health' %}
+                                    <i class="fa fa-medkit" aria-hidden="true"></i>
+                                    {% elif cat == 'sport' %}
+                                    <i class="fa fa-bicycle" aria-hidden="true"></i>
+                                    {% endif %}
+                                    {{cat}}
+                                </button>
+
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
             <a href="/?update=True&cat=all">
                 <button type="button" class="btn btn-sm btn-danger my-1 mx-5">⟳</button>
             </a>
@@ -154,8 +161,8 @@
             </div>
         </form>
 
-<!-- <script type='text/javascript' src='https://visualisasi.dpr.go.id/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1440px; height: 653px;'><object class='tableauViz' width='1440' height='653' style='display:none;'><param name='host_url' value='https%3A%2F%2Fvisualisasi.dpr.go.id%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DPRStreamrev2&#47;Dashboard2&#47;a648dd76-d0b4-4978-9cc4-20f89dff6590&#47;9e91f706-2544-4e34-b5c2-ff46daa450b5' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div> -->
-<!-- <script type='text/javascript' src='https://visualisasi.dpr.go.id/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1440px; height: 710px;'><object class='tableauViz' width='1440' height='710' style='display:none;'><param name='host_url' value='https%3A%2F%2Fvisualisasi.dpr.go.id%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DPRStreamrev2&#47;DistribusiSentimen&#47;793e23fb-8a35-4af1-b255-322da997e31a&#47;0cb91480-6a46-47a1-8667-f6a453728ab7' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div> -->
+        <!-- <script type='text/javascript' src='https://visualisasi.dpr.go.id/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1440px; height: 653px;'><object class='tableauViz' width='1440' height='653' style='display:none;'><param name='host_url' value='https%3A%2F%2Fvisualisasi.dpr.go.id%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DPRStreamrev2&#47;Dashboard2&#47;a648dd76-d0b4-4978-9cc4-20f89dff6590&#47;9e91f706-2544-4e34-b5c2-ff46daa450b5' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div> -->
+        <!-- <script type='text/javascript' src='https://visualisasi.dpr.go.id/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1440px; height: 710px;'><object class='tableauViz' width='1440' height='710' style='display:none;'><param name='host_url' value='https%3A%2F%2Fvisualisasi.dpr.go.id%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DPRStreamrev2&#47;DistribusiSentimen&#47;793e23fb-8a35-4af1-b255-322da997e31a&#47;0cb91480-6a46-47a1-8667-f6a453728ab7' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /></object></div> -->
 
         <div class="row mt-5">
             {% for populer in populers %}
